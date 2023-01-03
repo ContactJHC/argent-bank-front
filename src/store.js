@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import usersReducer from "./features/users";
 
-// store creation : initial state + reducer
+// store creation
 
 export default configureStore({
     reducer: {
