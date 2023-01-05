@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 import Home from "./components/Home/Home"
+import Login from "./components/Login/Login"
 
 export const routes = [
     {
@@ -16,10 +17,10 @@ export const routes = [
         //   path: "fiche-logement/:id",
         //   element: <Location />,
         // },
-        // {
-        //   path: "apropos",
-        //   element: <APropos />,
-        // },
+        {
+          path: "/login",
+          element: <Login />,
+        },
         // { 
         //     path: "*", 
         //     element: <NotFound /> 

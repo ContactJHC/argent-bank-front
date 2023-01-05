@@ -13,6 +13,11 @@ body {
   min-height: 100vh;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
 .main {
   flex: 1;
 }
@@ -276,6 +281,7 @@ section {
   width: 300px;
   margin: 0 auto;
   margin-top: 3rem;
+  margin-bottom: 6rem;
   padding: 2rem;
 }
 
