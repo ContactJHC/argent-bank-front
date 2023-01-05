@@ -1,14 +1,16 @@
-import { Provider } from "react-redux";
-import Bidon from "./components/Bidon";
-import store from "./store";
+import { useRoutes } from 'react-router-dom'
+import { routes } from './Routes'
+import './designs/css/main.css'
 
 function App() {
+
+  let content = useRoutes(routes)
+
   return (
-    <Provider store={store}>
-      <div style={{backgroundColor:"lightslategray"}}>Page d'accueil, données dans la console</div>
-      <Bidon />
-    </Provider>
+    <>
+      {content}
+    </>
   )
 }
 
-export default App;
+export default App

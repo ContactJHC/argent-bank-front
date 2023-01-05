@@ -9,5 +9,5 @@ export default function Bidon() {
       fetchOrUpdateUsers(store)
     }, [store])
 
-    return <div>un élément react</div>
+    return <div style={{backgroundColor:"lightgoldenrodyellow", height:"400px", margin:"auto", textAlign:"center", paddingTop:"100px"}}>un élément react</div>
 }
