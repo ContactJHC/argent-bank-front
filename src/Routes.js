@@ -1,5 +1,6 @@
 import Bidon from "./components/Bidon"
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom"
+import Header from "./components/Header/Header"
 
 export const routes = [
     {
@@ -29,7 +30,8 @@ export const routes = [
   function Layout() {
     return (
         <>
-            <Outlet />
+            <Header />
+                <Outlet />
             {/* <Bidon /> */}
             {/* <Header />
             <main>
