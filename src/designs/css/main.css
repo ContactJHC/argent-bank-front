@@ -151,8 +151,14 @@ section {
 }
 
 .main-nav-item {
+  display: flex;
   text-decoration: none;
   margin-right: 0.5rem;
+}
+
+.main-nav-item-icon {
+  display: inline-block;
+  margin-right: 0.5em;
 }
 
 .main-nav-item:hover {

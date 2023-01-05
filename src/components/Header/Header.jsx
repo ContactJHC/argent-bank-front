@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom'
 import argentBankLogo from '../../designs/img/argentBankLogo.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import userIcon from '../../assets/circle-user.svg'
 
 export default function Header() {
   return (
@@ -16,7 +16,7 @@ export default function Header() {
         </Link>
         <div>
             <Link to={"/login"} className="main-nav-item">
-                <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+                <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
                 Sign In
             </Link>
         </div>
