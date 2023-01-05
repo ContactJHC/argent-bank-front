@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Argent Bank - Transactions Page</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="main-nav">
+        <a class="main-nav-logo" href="./index.html">
+          <img
+            class="main-nav-logo-image"
+            src="./img/argentBankLogo.png"
+            alt="Argent Bank Logo"
+          />
+          <h1 class="sr-only">Argent Bank</h1>
+        </a>
+        <div>
+          <a class="main-nav-item" href="./user.html">
+            <i class="fa fa-user-circle"></i>
+            Tony
+          </a>
+          <a class="main-nav-item" href="./index.html">
+            <i class="fa fa-sign-out"></i>
+            Sign Out
+          </a>
+        </div>
+    </nav>
+    <main class="main">
+        <header>
+            <div>
+                <div id="header-title">Argent Bank Checking (x8349)</div>
+                <div id="header-balance">$2,082.79</div>
+                <div id="header-legend">Available Balance</div>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+              <div class="container-line" id="container-header">
+                <div class="container-arrow"></div>
+                <div class="container-date">DATE</div>
+                <div class="container-description">DESCRIPTION</div>
+                <div class="container-amount">AMOUNT</div>
+                <div class="container-balance">BALANCE</div>
+            </div>
+              <div class="container-row">
+                <div class="container-line">
+                  <div class="container-arrow">
+                    <div class="visible arrow-down"><img src="./img/arrowDown.svg" alt="flèche descendante"></div>
+                    <div class="hidden arrow-up"><img src="./img/arrowUp.svg" alt="flèche descendante"></div>
+                  </div>
+                  <div class="container-date">June 20th, 2020</div>
+                  <div class="container-description">Golden Sun Bakery</div>
+                  <div class="container-amount">$5.00</div>
+                  <div class="container-balance">$2082.79</div>
+                </div>
+                <div class="container-details hidden">
+                  <div class="container-line container-details-type">Transaction Type : Electronic</div>
+                  <div class="container-line container-details-category">
+                    <div class="category-text">Category :</div>
+                    <div class="hidden">
+                      <img src="./img/pencil.svg" alt="crayon">
+                    </div>
+                    <div class="visible">
+                      <select class="category-selector">
+                        <option value="">--Please choose an option--</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="food">Food</option>
+                        <option value="money">Money</option>
+                        <option value="fuel">Fuel</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="clothes">Clothes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="container-line container-details-notes">                    
+                    <label for="notes">
+                      <div class="notes-text">Notes : </div>
+                    </label>
+                    <div class="hidden">
+                      <img src="./img/pencil.svg" alt="crayon">
+                    </div>
+                    <div class="visible">
+                      <input type="text" id="notes"  class="notes-input">
+                    </div>                
+                  </div>
+                </div>
+              </div>
+              <div class="container-row">
+                <div class="container-line">
+                  <div class="container-arrow">
+                    <div class="visible arrow-down"><img src="./img/arrowDown.svg" alt="flèche descendante"></div>
+                    <div class="hidden arrow-up"><img src="./img/arrowUp.svg" alt="flèche descendante"></div>
+                  </div>
+                  <div class="container-date">June 20th, 2020</div>
+                  <div class="container-description">Golden Sun Bakery</div>
+                  <div class="container-amount">$5.00</div>
+                  <div class="container-balance">$2082.79</div>
+                </div>
+                <div class="container-details">
+                  <div class="container-line container-details-type">Transaction Type : Electronic</div>
+                  <div class="container-line container-details-category">
+                    <div class="category-text">Category :</div>
+                    <div class="hidden">
+                      <img src="./img/pencil.svg" alt="crayon">
+                    </div>
+                    <div class="visible">
+                      <select class="category-selector">
+                        <option value="">--Please choose an option--</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="food">Food</option>
+                        <option value="money">Money</option>
+                        <option value="fuel">Fuel</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="clothes">Clothes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="container-line container-details-notes">                    
+                    <label for="notes">
+                      <div class="notes-text">Notes : </div>
+                    </label>
+                    <div class="hidden">
+                      <img src="./img/pencil.svg" alt="crayon">
+                    </div>
+                    <div class="visible">
+                      <input type="text" id="notes"  class="notes-input">
+                    </div>                
+                  </div>
+                </div>
+              </div>
+              <div class="container-row">
+                <div class="container-line">
+                  <div class="container-arrow">
+                    <div class="visible arrow-down"><img src="./img/arrowDown.svg" alt="flèche descendante"></div>
+                    <div class="hidden arrow-up"><img src="./img/arrowUp.svg" alt="flèche descendante"></div>
+                  </div>
+                  <div class="container-date">June 20th, 2020</div>
+                  <div class="container-description">Golden Sun Bakery</div>
+                  <div class="container-amount">$5.00</div>
+                  <div class="container-balance">$2082.79</div>
+                </div>
+                <div class="container-details hidden">
+                  <div class="container-line container-details-type">Transaction Type : Electronic</div>
+                  <div class="container-line container-details-category">
+                    <div class="category-text">Category :</div>
+                    <div class="hidden">
+                      <img src="./img/pencil.svg" alt="crayon">
+                    </div>
+                    <div class="visible">
+                      <select class="category-selector">
+                        <option value="">--Please choose an option--</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="food">Food</option>
+                        <option value="money">Money</option>
+                        <option value="fuel">Fuel</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="clothes">Clothes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="container-line container-details-notes">                    
+                    <label for="notes">
+                      <div class="notes-text">Notes : </div>
+                    </label>
+                    <div class="hidden">
+                      <img src="./img/pencil.svg" alt="crayon">
+                    </div>
+                    <div class="visible">
+                      <input type="text" id="notes"  class="notes-input">
+                    </div>                
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer-text">Copyright 2020 Argent Bank</p>
+    </footer>
+
+    <script src="./scripts/transactions.js"
+  </body>
+
+
+</html>
