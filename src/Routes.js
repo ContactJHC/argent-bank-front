@@ -1,6 +1,7 @@
-import Bidon from "./components/Bidon"
 import { Outlet } from "react-router-dom"
 import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
+import Home from "./components/Home/Home"
 
 export const routes = [
     {
@@ -9,7 +10,7 @@ export const routes = [
       children: [
         { 
             index: true, 
-            element: <Bidon /> 
+            element: <Home /> 
         },
         // {
         //   path: "fiche-logement/:id",
@@ -32,6 +33,7 @@ export const routes = [
         <>
             <Header />
                 <Outlet />
+            <Footer />
             {/* <Bidon /> */}
             {/* <Header />
             <main>

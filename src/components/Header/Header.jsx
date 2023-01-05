@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-import argentBankLogo from '../../designs/img/argentBankLogo.png'
+import argentBankLogo from '../../assets/argentBankLogo.png'
 import userIcon from '../../assets/circle-user.svg'
 
 export default function Header() {
