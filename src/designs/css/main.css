@@ -388,6 +388,12 @@ section {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  /* text-decoration: none;
+  text-align: center; */
+}
+
+.transaction-link {
+  text-decoration: none;
 }
 
 @media (min-width: 720px) {

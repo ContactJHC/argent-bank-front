@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer"
 import Home from "./pages/Home/Home"
 import Login from "./pages/Login/Login"
 import User from "./pages/User/User"
+import Transactions from "./pages/Transactions/Transactions"
 
 export const routes = [
     {
@@ -14,6 +15,10 @@ export const routes = [
             index: true, 
             element: <Home /> 
         },
+        {
+          path: "/profile/view/:accountId",
+          element: <Transactions />
+        },
         // {
         //   path: "fiche-logement/:id",
         //   element: <Location />,
@@ -23,7 +28,7 @@ export const routes = [
           element: <Login />
         },
         {
-          path: "/user",
+          path: "/profile",
           element: <User />
         },
         // { 
@@ -40,12 +45,6 @@ export const routes = [
             <Header />
                 <Outlet />
             <Footer />
-            {/* <Bidon /> */}
-            {/* <Header />
-            <main>
-                <Outlet />
-            </main>
-            <Footer /> */}
         </>
     )
   }
