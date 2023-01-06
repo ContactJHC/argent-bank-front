@@ -9,7 +9,7 @@ export default function Account({ title, amount, description, accountId }) {
             <p className="account-amount-description">{description}</p>
         </div>
         <div className="account-content-wrapper cta">
-            <Link to={`/profile/view/:${accountId}`} className="transaction-link">
+            <Link to={`/user/view/${accountId}`} className="transaction-link">
             <button className="transaction-button">View transactions</button>
             </Link>
         </div>

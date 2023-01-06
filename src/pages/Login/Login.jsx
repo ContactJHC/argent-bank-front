@@ -21,7 +21,7 @@ export default function Login() {
             </label>
           </div>
           {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-          <Link to={"/profile"} className="sign-in-button">
+          <Link to={"/user"} className="sign-in-button">
             Sign In
           </Link>
         </form>

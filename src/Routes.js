@@ -16,7 +16,7 @@ export const routes = [
             element: <Home /> 
         },
         {
-          path: "/profile/view/:accountId",
+          path: "/user/view/:accountId",
           element: <Transactions />
         },
         // {
@@ -28,7 +28,7 @@ export const routes = [
           element: <Login />
         },
         {
-          path: "/profile",
+          path: "/user",
           element: <User />
         },
         // { 
