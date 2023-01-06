@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export default function Login() {
   return (
@@ -20,10 +21,9 @@ export default function Login() {
             </label>
           </div>
           {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-          <a href="./user.html" className="sign-in-button">Sign In</a>
-          {/* <!-- SHOULD BE THE BUTTON BELOW --> */}
-          {/* <button className="sign-in-button">Sign In</button> */}
-          {/* <!--  --> */}
+          <Link to={"/user"} className="sign-in-button">
+            Sign In
+          </Link>
         </form>
       </section>
     </main>

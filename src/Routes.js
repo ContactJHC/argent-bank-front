@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
-import Home from "./components/Home/Home"
-import Login from "./components/Login/Login"
+import Home from "./pages/Home/Home"
+import Login from "./pages/Login/Login"
+import User from "./pages/User/User"
 
 export const routes = [
     {
@@ -19,7 +20,11 @@ export const routes = [
         // },
         {
           path: "/login",
-          element: <Login />,
+          element: <Login />
+        },
+        {
+          path: "/user",
+          element: <User />
         },
         // { 
         //     path: "*", 
