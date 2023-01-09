@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import LoginForm from "../../components/LoginForm/LoginForm"
+
 
 export default function Login() {
   // fetchOrUpdateUsers(store)
@@ -22,7 +24,8 @@ export default function Login() {
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <form>
+        <LoginForm />
+        {/* <form>
           <div className="input-wrapper">
             <label for="username">Username</label>
             <input type="text" id="username" />
@@ -39,7 +42,7 @@ export default function Login() {
           <Link to={"/user"} className="sign-in-button">
             Sign In
           </Link>
-        </form>
+        </form> */}
       </section>
     </main>
   )
