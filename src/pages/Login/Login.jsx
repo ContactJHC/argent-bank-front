@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom"
 
 export default function Login() {
+  // fetchOrUpdateUsers(store)
+
+
+  fetch('http://localhost:3001/api/v1/user/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        'email': 'tony@stark.com',
+        'password': 'password123'
+    })
+}).then(resp => resp.json())
+  .then(json => console.log(json))
+
+  
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
@@ -20,7 +36,6 @@ export default function Login() {
             <label for="remember-me">Remember me
             </label>
           </div>
-          {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
           <Link to={"/user"} className="sign-in-button">
             Sign In
           </Link>
