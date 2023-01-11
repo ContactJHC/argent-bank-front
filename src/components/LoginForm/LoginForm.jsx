@@ -4,6 +4,9 @@ import "./LoginForm.css"
 export default function LoginForm() {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
+    const [isRememberChecked, setIsRememberChecked] = useState(false)
+
+
     const resetForm = () => {
         setUserName('')
         setPassword('')
@@ -31,7 +34,13 @@ export default function LoginForm() {
         <div className="input-remember">
             <label>
                 <span>Remember me</span>
-                <input type="checkbox"/>
+                <input 
+                    type="checkbox"
+                    onChange={() => {
+                        setIsRememberChecked(!isRememberChecked)
+                        console.log(isRememberChecked)
+                    }}
+                />
             </label>
         </div>
         <button className="sign-in-button">Sign In</button>
