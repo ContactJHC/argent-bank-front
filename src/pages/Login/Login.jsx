@@ -4,17 +4,17 @@ import LoginForm from "../../components/LoginForm/LoginForm"
 export default function Login() {
   // fetchOrUpdateUsers(store)
 
-  fetch('http://localhost:3001/api/v1/user/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        'email': 'tony@stark.com',
-        'password': 'password123'
-    })
-}).then(resp => resp.json())
-  .then(json => console.log(json))
+//   fetch('http://localhost:3001/api/v1/user/login', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//         'email': 'tony@stark.com',
+//         'password': 'password123'
+//     })
+// }).then(resp => resp.json())
+//   .then(json => console.log(json))
 
   
   return (
