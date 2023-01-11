@@ -1,23 +1,22 @@
-import { useState } from "react";
+import { Link } from "react-router-dom"
+import { useState } from "react"
 import "./LoginForm.css"
+import { useDispatch, useSelector } from "react-redux"
+
 
 export default function LoginForm() {
+  
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [isRememberChecked, setIsRememberChecked] = useState(false)
 
-
-    const resetForm = () => {
-        setUserName('')
-        setPassword('')
-    }
     return (
     <form className='login-form'>
         <label>
             <span>Username</span>
             <input 
                 type="text" 
-                onChange={(e) => setUserName(e.target.value)} 
+                onChange={(e) => {setUserName(e.target.value)} }
                 value={userName}
                 required
             />
@@ -36,16 +35,25 @@ export default function LoginForm() {
                 <span>Remember me</span>
                 <input 
                     type="checkbox"
-                    onChange={() => {
+                    onClick={(e) => {
                         setIsRememberChecked(!isRememberChecked)
-                        console.log(isRememberChecked)
                     }}
+                    
                 />
             </label>
         </div>
-        <button className="sign-in-button">Sign In</button>
-        <p onClick={resetForm}>UserName : {userName} - Password : {password}
-        Reset the form</p>
+        <Link 
+            to={"/user"} 
+            className="sign-in-button" 
+            onClick={
+                () => {
+                    console.log('user email : ', userName, 'user password : ', password);
+                }
+            }
+        >
+            Sign In
+        </Link>
+        
     </form>
     )
     }

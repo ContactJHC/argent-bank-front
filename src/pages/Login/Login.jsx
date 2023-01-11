@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom"
 import LoginForm from "../../components/LoginForm/LoginForm"
 
 
 export default function Login() {
   // fetchOrUpdateUsers(store)
-
 
   fetch('http://localhost:3001/api/v1/user/login', {
     method: 'POST',

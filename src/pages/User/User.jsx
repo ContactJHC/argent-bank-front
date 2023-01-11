@@ -15,7 +15,8 @@ export default function User() {
                 title={account.title}
                 amount={account.amount}
                 description={account.description}
-                accountId={account.accountId} />
+                accountId={account.accountId}
+                key={account.accountId} />
         )
       })}
     </main>
