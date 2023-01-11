@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import "./LoginForm.css"
-// import { useDispatch, useSelector } from "react-redux"
-import { postLogin } from "../../services/services"
+import { useDispatch } from "react-redux"
+import * as services from "../../services/services"
+import store from "../../store"
 
 
 export default function LoginForm() {
-  
+    const dispatch = useDispatch()
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [isRememberChecked, setIsRememberChecked] = useState(false)
@@ -56,9 +57,15 @@ export default function LoginForm() {
             onClick={
                 async () => {
                     // let token = await postLogin('iu','ui')
-                    token = await postLogin(userName, password)
+                    token = await services.postLogin(userName, password)
                     setToken(token)
-                    console.log(token)
+                    dispatch({
+                        type : "token",
+                        payload : {
+                            token: token
+                        }
+                    })
+                    console.log(store.getState())
                 }
             }
         >

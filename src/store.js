@@ -26,6 +26,13 @@ import { createStore } from "redux"
             userName: action.payload.changingField 
           }
         }
+
+        if (action.type === "token") {
+            return {
+              ...state,
+              token: action.payload.token 
+            }
+          }
         // si l'action n'est pas du bon type on retourne le state
         return state
     }
