@@ -12,15 +12,21 @@ export default function LoginForm() {
     <form className='login-form'>
         <label>
             <span>Username</span>
-            <input type="text" onChange={
-                (e) => setUserName(e.target.value)
-            } />
+            <input 
+                type="text" 
+                onChange={(e) => setUserName(e.target.value)} 
+                value={userName}
+                required
+            />
         </label>
         <label>
             <span>Password</span>
-            <input type="text" onChange={
-                (e) => setPassword(e.target.value)
-            }/>
+            <input 
+                type="text" 
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
+            />
         </label>
         <div className="input-remember">
             <label>
