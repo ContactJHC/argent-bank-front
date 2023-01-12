@@ -6,6 +6,8 @@ import logOut from '../../assets/logOut.svg'
 import './Header.css'
 
 export default function Header() {
+
+    let isLogged = false
   return (
     <nav className="main-nav">
         <Link to={"/"} className="main-nav-logo">
@@ -17,28 +19,26 @@ export default function Header() {
             <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
-            <Link to={"/login"} className="main-nav-item">
-                <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
-
-                {/* (isLogged && (
-                <> */}
+            {(isLogged ?
+                (
+                <Link to={"/"} className="main-nav-item">
+                    <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
                     <span id="userName">
                         {/* {userName} */}
                         Tony
                     </span>
                     <img src={logOut} alt="disconnect"/>
                     <span id="signOut">Sign Out</span>
-                {/* </>
-                )) */}
-
-
-
-                {/* (!isLogged && ( */}
-                    {/* <span id="signIn">
+                </Link>
+                ) : (
+                <Link to={"/login"} className="main-nav-item">
+                    <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
+                    <span id="signIn">
                         Sign In
-                    </span> */}
-                {/* )) */}
-            </Link>
+                    </span>
+                </Link>
+                )
+            )}            
         </div>
     </nav>
   )
