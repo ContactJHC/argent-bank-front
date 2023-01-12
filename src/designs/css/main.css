@@ -274,6 +274,7 @@ section {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  text-decoration: underline;
 }
 
 .sign-in-content {
@@ -288,10 +289,6 @@ section {
 
 .sign-in-icon {
   font-size: 5rem;
-}
-
-.input-remember {
-  display: flex;
 }
 
 .input-remember label {

@@ -1,4 +1,5 @@
 import LoginForm from "../../components/LoginForm/LoginForm"
+import userIcon from "../../assets/circle-user.svg"
 
 
 export default function Login() {
@@ -20,7 +21,7 @@ export default function Login() {
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
-        <i className="fa fa-user-circle sign-in-icon"></i>
+        <img src={userIcon} alt="Utilisateur" />
         <h1>Sign In</h1>
         <LoginForm />
         {/* <form>

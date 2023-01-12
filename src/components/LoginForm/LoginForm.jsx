@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, redirect } from "react-router-dom"
 import { useState } from "react"
 import "./LoginForm.css"
 import { useDispatch } from "react-redux"
@@ -12,10 +12,11 @@ export default function LoginForm() {
     const [password, setPassword] = useState('')
     const [isRememberChecked, setIsRememberChecked] = useState(false)
     let [token, setToken] = useState('')
+    const [isLogged, setIsLogged] = useState(false)
 
     return (
     <form className='login-form'>
-        <label>
+        <label className="input-wrapper">
             <span>Username</span>
             <input 
                 type="text" 
@@ -26,7 +27,7 @@ export default function LoginForm() {
                 autoComplete="tony@stark.com"
             />
         </label>
-        <label>
+        <label className="input-wrapper">
             <span>Password</span>
             <input 
                 id="passwordInput"
@@ -39,26 +40,27 @@ export default function LoginForm() {
         </label>
         <div className="input-remember">
             <label>
-                <span>Remember me</span>
                 <input 
                     type="checkbox"
                     onClick={(e) => {
                         setIsRememberChecked(!isRememberChecked)
                     }}
-                    
                 />
+                <span>Remember me</span>
             </label>
         </div>
-        <button type="submit"
-            style={{display:'none'}}></button>
-        <Link 
-            to={"/user"} 
+        <button 
             className="sign-in-button" 
             onClick={
-                async () => {
+                async (e) => {
+                    e.preventDefault()
                     // let token = await postLogin('iu','ui')
                     token = await services.postLogin(userName, password)
-                    setToken(token)
+                    if (token.length) {
+                        setIsLogged(true)
+                        redirect("/user")
+                        console.log('ok');
+                    }
                     dispatch({
                         type : "token",
                         payload : {
@@ -67,10 +69,7 @@ export default function LoginForm() {
                     })
                     console.log(store.getState())
                 }
-            }
-        >
-            Sign In
-        </Link>
+            }> Sign In</button>
         
     </form>
     )
