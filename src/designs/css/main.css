@@ -158,6 +158,7 @@ section {
 
 .main-nav-item {
   display: flex;
+  align-items: center;
   text-decoration: none;
   margin-right: 0.5rem;
 }
@@ -165,6 +166,7 @@ section {
 .main-nav-item-icon {
   display: inline-block;
   margin-right: 0.5em;
+  width: 18px;
 }
 
 .main-nav-item:hover {
