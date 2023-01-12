@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom'
 import argentBankLogo from '../../assets/argentBankLogo.png'
 import userIcon from '../../assets/circle-user.svg'
+import logOut from '../../assets/logOut.svg'
+import './Header.css'
 
 export default function Header() {
   return (
@@ -17,7 +19,25 @@ export default function Header() {
         <div>
             <Link to={"/login"} className="main-nav-item">
                 <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
-                Sign In
+
+                {/* (isLogged && (
+                <> */}
+                    <span id="userName">
+                        {/* {userName} */}
+                        Tony
+                    </span>
+                    <img src={logOut} alt="disconnect"/>
+                    <span id="signOut">Sign Out</span>
+                {/* </>
+                )) */}
+
+
+
+                {/* (!isLogged && ( */}
+                    {/* <span id="signIn">
+                        Sign In
+                    </span> */}
+                {/* )) */}
             </Link>
         </div>
     </nav>
