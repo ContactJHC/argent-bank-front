@@ -1,0 +1,19 @@
+.editName, .editNameButtons {
+    display: flex;
+    justify-content: center;
+
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.editNameButtons button  {
+    width: 100px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+input.editName-inputs-first, .editName-inputs-last {
+    width: 100px;
+    border-radius: 5px;
+}

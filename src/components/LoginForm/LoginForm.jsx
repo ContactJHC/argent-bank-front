@@ -31,7 +31,8 @@ export default function LoginForm() {
             <span>Password</span>
             <input 
                 id="passwordInput"
-                type="password" 
+                // type="password"
+                type="text" 
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 required
