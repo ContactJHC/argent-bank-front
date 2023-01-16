@@ -1,5 +1,5 @@
-import { Link, redirect } from "react-router-dom"
-import { useState } from "react"
+import { Link, redirect, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 import "./LoginForm.css"
 import { useDispatch } from "react-redux"
 import * as services from "../../services/services"
@@ -14,7 +14,10 @@ export default function LoginForm() {
     let [token, setToken] = useState('')
     const [isLogged, setIsLogged] = useState(false)
 
+    const navigate = useNavigate()
+
     return (
+        
     <form className='login-form'>
         <label className="input-wrapper">
             <span>Username</span>
@@ -45,6 +48,9 @@ export default function LoginForm() {
                     type="checkbox"
                     onClick={(e) => {
                         setIsRememberChecked(!isRememberChecked)
+                        dispatch({
+                            type: "checkedUnchecked"
+                        })
                     }}
                 />
                 <span>Remember me</span>
@@ -55,12 +61,16 @@ export default function LoginForm() {
             onClick={
                 async (e) => {
                     e.preventDefault()
-                    // let token = await postLogin('iu','ui')
-                    token = await services.postLogin(userName, password)
+                    let token = await services.postLogin('iu','ui')
+                    // token = await services.postLogin(userName, password)
                     if (token.length) {
+
+
+
                         setIsLogged(true)
-                        redirect("/user")
-                        console.log('ok');
+                        navigate('/user')
+                        console.log('le state à la fin du if token.length', store.getState())
+
                     }
                     dispatch({
                         type : "token",
@@ -68,7 +78,29 @@ export default function LoginForm() {
                             token: token
                         }
                     })
-                    console.log(store.getState())
+
+                    dispatch({
+                        type: "loginLogout",
+                        payload : {
+                            bool: true
+                        }
+                    })
+
+                    dispatch({
+                        type: "userNameChange",
+                        payload : {
+                            changingField: userName
+                        }
+                    })
+
+                    dispatch({
+                        type: "passwordChange",
+                        payload : {
+                            changingField: password
+                        }
+                    })
+
+                    console.log('le store à la fin du clic sur sign in', store.getState())
                 }
             }> Sign In</button>
         

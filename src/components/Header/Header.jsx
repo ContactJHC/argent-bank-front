@@ -4,10 +4,13 @@ import argentBankLogo from '../../assets/argentBankLogo.png'
 import userIcon from '../../assets/circle-user.svg'
 import logOut from '../../assets/logOut.svg'
 import './Header.css'
+import { useSelector } from 'react-redux'
 
 export default function Header() {
 
-    let isLogged = false
+    const isLogged = useSelector((s)=>s.isLogged)
+    const userName = useSelector((s)=>s.firstName)
+
   return (
     <nav className="main-nav">
         <Link to={"/"} className="main-nav-logo">
@@ -24,8 +27,8 @@ export default function Header() {
                 <Link to={"/"} className="main-nav-item">
                     <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
                     <span id="userName">
-                        {/* {userName} */}
-                        Tony
+                        {userName}
+                        {/* Tony */}
                     </span>
                     <img src={logOut} alt="disconnect"/>
                     <span id="signOut">Sign Out</span>

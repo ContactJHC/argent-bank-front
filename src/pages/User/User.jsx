@@ -1,18 +1,43 @@
 import Account from "../../components/Account/Account"
 import data from "../../data/data"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import './User.css'
+import store from "../../store"
+import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { postProfile } from "../../services/services"
+
 
 export default function User() {
 
+  // données en dur pour simuler connexion utilisateur
   let userFirstName = 'Tony'
   let userLastName = 'Jarris'
 
+  // states locaux pour élaborer la logique de la page avant de passer en global
   const [isEditingName, setIsEditingName] = useState(false)
   const [newFirstName, setNewFirstName] = useState('')
   const [newLastName, setNewLastName] = useState('')
 
+  // afficher/cacher avec conditions l'encart de changement de nom
   const inverseEditingName = () => setIsEditingName(!isEditingName)
+  const navigate = useNavigate()
+
+  const token = useSelector((s)=>s.token)
+  const userName = postProfile(token)
+
+  //   ici on vérifie la présence de connexion, sinon navigate home
+  useEffect(() => {
+    if (token === '') {
+      navigate('/')
+      console.log('redirection vers Home car token manquant');
+    }
+  },[token, navigate])
+  
+  
+  
+
+
   return (
     <main className="main bg-dark">
       {!isEditingName ? (
@@ -78,5 +103,6 @@ export default function User() {
         )
       })}
     </main>
+
   )
 }

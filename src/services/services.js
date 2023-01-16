@@ -1,4 +1,7 @@
 // import { usersFetching, usersResolved, usersRejected } from "../features/users"
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 
 export async function postLogin(userName, password) {
     try {
@@ -8,14 +11,14 @@ export async function postLogin(userName, password) {
                 headers: {
                 'Content-Type': 'application/json'
                 },
-                // body: JSON.stringify({
-                //     'email': 'tony@stark.com',
-                //     'password': 'password123'
-                // })
                 body: JSON.stringify({
-                    'email': userName,
-                    'password': password
+                    'email': 'tony@stark.com',
+                    'password': 'password123'
                 })
+                // body: JSON.stringify({
+                //     'email': userName,
+                //     'password': password
+                // })
             })
             .then((res) => res.json())
             .then((json) => json.body.token)
@@ -48,7 +51,7 @@ export async function postSignup(email, password, firstName, lastName) {
                 })
             })
             .then((res) => res.json())
-            .then((json) => json.body.token)
+            .then((json) => console.log(json))
         return result
     } catch (err) {
         console.log(err);
@@ -60,14 +63,14 @@ export async function postProfile(token) {
     try {
         const result = await fetch('http://localhost:3001/api/v1/user/profile', 
             {
-                method: 'POST',
+                method: "POST",
+                body: '',
                 headers: {
-                'Content-Type': 'application/json',
-                'Authentication': `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 }
             })
             .then((res) => res.json())
-            .then((json) => json.body.token)
+            .then((json) => console.log('post profile sur user donne: ', json))
         return result
     } catch (err) {
         console.log(err);
@@ -94,7 +97,7 @@ export async function putProfile(token, firstName, lastName) {
                 })
             })
             .then((res) => res.json())
-            .then((json) => json.body.token)
+            .then((json) => console.log(json))
         return result
     } catch (err) {
         console.log(err);

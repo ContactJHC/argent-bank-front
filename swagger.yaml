@@ -9,7 +9,8 @@ basePath: /api/v1
 schemes:
   - http
 paths:
-  /user/profile/transactions/:accountId:
+  /user/profile/transactions/:accountId/:billId:
+    put:
   # GET : les données du compte retournées sous forme d'objet : titre et objet d'objet pour les débits
   # PUT : le text input pour ajouter des notes sur un débit 
 
