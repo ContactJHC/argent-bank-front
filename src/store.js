@@ -8,6 +8,13 @@ function reducer(state, action) {
         }
     }
 
+    if (action.type === "resetCheckedUnchecked") {
+        return {
+            ...state,
+            isRememberChecked: action.payload.bool
+        }
+    }
+
     if (action.type === "firstNameChange") {
         return {
         ...state,

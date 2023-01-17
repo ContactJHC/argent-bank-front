@@ -13,6 +13,56 @@ export default function Header() {
     const userName = useSelector((s)=>s.firstName)
     const dispatch = useDispatch()
 
+    function resetState() {    
+        dispatch({
+            type: "resetCheckedUnchecked",
+            payload : {
+                bool: false
+            }
+        })
+
+        dispatch({
+            type: "firstNameChange",
+            payload : {
+                changingField: ""
+            }
+        })
+
+        dispatch({
+            type: "lastNameChange",
+            payload : {
+                changingField: ""
+            }
+        })
+
+        dispatch({
+            type: "userNameChange",
+            payload : {
+                changingField: ""
+            }
+        })
+
+        dispatch({
+            type: "passwordChange",
+            payload : {
+                changingField: ""
+            }
+        })
+
+        dispatch({
+            type: "token",
+            payload : {
+                token: ""
+            }
+        })
+
+        dispatch({
+            type: "loginLogout",
+            payload : {
+                bool: false
+            }
+        })}
+
   return (
     <nav className="main-nav">
         <Link to={"/"} className="main-nav-logo">
@@ -37,12 +87,7 @@ export default function Header() {
                         to={"/"} 
                         className="main-nav-item"
                         onClick={()=>{
-                            dispatch({
-                                type: "loginLogout",
-                                payload : {
-                                    bool: false
-                                }
-                            })
+                            resetState()
                             console.log( 'le clic est entendu ou pas : ',store.getState() )
                     }}>
                         <img src={logOut} alt="disconnect"/>
