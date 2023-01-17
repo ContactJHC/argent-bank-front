@@ -11,21 +11,14 @@ function reducer(state, action) {
     if (action.type === "firstNameChange") {
         return {
         ...state,
-        userName: action.payload.changingField 
+        firstName: action.payload.changingField 
         }
     }
 
     if (action.type === "lastNameChange") {
         return {
         ...state,
-        userName: action.payload.changingField 
-        }
-    }
-
-    if (action.type === "userNameChange") {
-        return {
-        ...state,
-        userName: action.payload.changingField 
+        lastName: action.payload.changingField 
         }
     }
 

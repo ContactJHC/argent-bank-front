@@ -6,6 +6,7 @@ import store from "../../store"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { postProfile } from "../../services/services"
+import UsePostProfile from "../../services/UsePostProfile"
 
 
 export default function User() {
@@ -22,9 +23,15 @@ export default function User() {
   // afficher/cacher avec conditions l'encart de changement de nom
   const inverseEditingName = () => setIsEditingName(!isEditingName)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const token = useSelector((s)=>s.token)
-  const userName = postProfile(token)
+  UsePostProfile(token)
+
+
+  const state = useSelector((s)=>s)
+
+  console.log(state);
 
   //   ici on vérifie la présence de connexion, sinon navigate home
   useEffect(() => {

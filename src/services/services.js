@@ -69,9 +69,15 @@ export async function postProfile(token) {
                     Authorization: `Bearer ${token}`,
                 }
             })
-            .then((res) => res.json())
-            .then((json) => console.log('post profile sur user donne: ', json))
-        return result
+            .then(async (res) => {
+                let data = await res.json()
+                let prenom = data.body.firstName
+                let nom = data.body.lastName
+                console.log(data);
+                return ({prenom, nom})
+                })
+            console.log('on a un result', result);
+            
     } catch (err) {
         console.log(err);
         return null
