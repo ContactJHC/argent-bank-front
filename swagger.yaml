@@ -8,40 +8,56 @@ host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
-paths:
-  /user/profile/transactions/:accountId/:billId:
-    put:
+# paths:
+#   /user/profile/transactions/:accountId/:billId:
+#   # /user/profile/transactions/:accountId/:billId:
+#     put:
   # GET : les données du compte retournées sous forme d'objet : titre et objet d'objet pour les débits
   # PUT : le text input pour ajouter des notes sur un débit 
-
-
-
-
+paths:
+  /user/profile/transactions/:accountId:
     post:
+      security:
+        - Bearer: []
       tags:
         - User Module
-      summary: Login
-      description: API for Login
+      summary: User Transactions API
+      description: API for fetching an user account
       parameters:
-        - in: body
-          name: body
-          description: Login Payload
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
           required: true
-          schema:
-            $ref: '#/definitions/Login'
       produces:
         - application/json
       responses:
         '200':
-          description: Login Successfully
+          description: Account retrieved successully
           schema:
-            $ref: '#/definitions/LoginResponse'
+            $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/signup:
-    post:
+    get:
+      tags:
+        - User Module
+      summary: Transactions
+      description: Transactions for one account
+      # no parameters for a get request, to be confirmed
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions fetched successfully
+          schema:
+            $ref: '#/definitions/TransactionsResponse'
+        '400':
+          description: Invalid URL
+        '500':
+          description: Internal Server Error
+  /user/profile/transactions/:accountId/:billId:
+    get:
       tags:
         - User Module
       summary: Signup
@@ -155,15 +171,16 @@ definitions:
       body:
         type: object
         properties:
-          id:
+          accountId:
             type: string
-          email:
-            type: string
-  LoginResponse:
+  TransactionsResponse:
     type: object
     properties:
-      token:
-        type: string
+      bills:
+        type: object
+        properties:
+          bill:
+            type: array
   UserProfile:
     type: object
     properties:

@@ -88,7 +88,6 @@ export default function Header() {
                         className="main-nav-item"
                         onClick={()=>{
                             resetState()
-                            console.log( 'le clic est entendu ou pas : ',store.getState() )
                     }}>
                         <img src={logOut} alt="disconnect"/>
                         <span id="signOut">Sign Out</span>

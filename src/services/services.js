@@ -89,18 +89,13 @@ export async function putProfile(token, firstName, lastName) {
         const result = await fetch('http://localhost:3001/api/v1/user/profile', 
             {
                 method: 'PUT',
-                headers: {
-                'Content-Type': 'application/json',
-                'Authentication': `Bearer ${token}`
-                },
-                // body: JSON.stringify({
-                //     "firstName": "tony",
-                //     "lastName": "pastark"
-                // })
-                body: JSON.stringify({
+                body: {
                     "firstName": firstName,
                     "lastName": lastName
-                })
+                },
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
             })
             .then((res) => res.json())
             .then((json) => console.log(json))

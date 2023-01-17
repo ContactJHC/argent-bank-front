@@ -1,41 +1,39 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-export default function UsePostProfile(token) {
+export default function UsePutProfile(token, firstName, lastName) {
     const dispatch = useDispatch()
-    let leprenom = useSelector(s=>s.firstName)
-    let lenom = useSelector(s=>s.lastName)
     useEffect( () => {
-        async function postProfileData(token) {
+        async function putProfileData(token, firstName, lastName) {
             try {
                 await fetch('http://localhost:3001/api/v1/user/profile', 
                 {
-                    method: "POST",
-                    body: '',
+                    method: "PUT",
+                    body: {
+                        "firstName": firstName,
+                        "lastName": lastName
+                    },
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 })
                 .then(async (res) => {
                     let data = await res.json()
-                    let prenom = data.body.firstName
-                    let nom = data.body.lastName
+                    console.log(data);
 
                     dispatch({
                         type: "firstNameChange",
-                        payload : {
-                            changingField: prenom
+                        payload: {
+                          changingField: firstName
                         }
-                    })
+                      })
 
                     dispatch({
                         type: "lastNameChange",
-                        payload : {
-                            changingField: nom
+                        payload: {
+                          changingField: lastName
                         }
-                    })
-
-                    console.log('le prénom :', leprenom, 'le nom : ', lenom);
+                      })
 
                 })
                 
@@ -44,11 +42,13 @@ export default function UsePostProfile(token) {
                 return null
             }
         }
-        postProfileData(token)
+        putProfileData(token, firstName, lastName)
         
 
 
 
-    }, [dispatch, token])
+    }, [dispatch, token, firstName, lastName])
 
+    let state = useSelector(s=>s)
+    console.log('le dernier state : ',state);
 }

@@ -5,15 +5,15 @@ import './User.css'
 import store from "../../store"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { postProfile } from "../../services/services"
+import { postProfile, putProfile } from "../../services/services"
 import UsePostProfile from "../../services/UsePostProfile"
 
 
 export default function User() {
 
   // données en dur pour simuler connexion utilisateur
-  let userFirstName = 'Tony'
-  let userLastName = 'Jarris'
+  let userFirstName = useSelector(s=>s.firstName)
+  let userLastName = useSelector(s=>s.lastName)
 
   // states locaux pour élaborer la logique de la page avant de passer en global
   const [isEditingName, setIsEditingName] = useState(false)
@@ -28,11 +28,6 @@ export default function User() {
   const token = useSelector((s)=>s.token)
   UsePostProfile(token)
 
-
-  const state = useSelector((s)=>s)
-
-  console.log(state);
-
   //   ici on vérifie la présence de connexion, sinon navigate home
   useEffect(() => {
     if (token === '') {
@@ -40,7 +35,6 @@ export default function User() {
       console.log('redirection vers Home car token manquant');
     }
   },[token, navigate])
-  
   
   
 
@@ -83,13 +77,36 @@ export default function User() {
           <div className="editNameButtons">
             <button 
               className="saveButton"
-              onClick={inverseEditingName}
+              onClick={
+                () => {              
+                dispatch({
+                  type: "firstNameChange",
+                  payload: {
+                    changingField: 'prénom en dur local'
+                  }
+                })
+                dispatch({
+                  type: "lastNameChange",
+                  payload: {
+                    changingField: newLastName
+                  }
+                })
+                // console.log(store.getState());
+                // console.log(newFirstName, userFirstName, newLastName, userLastName);
+                putProfile(token, 'prénom en dur', 'nom en dur')
+                // console.log(userFirstName, userLastName);
+                inverseEditingName()
+              }}
               >
               Save
             </button>
             <button 
               className="CancelButton"
-              onClick={inverseEditingName}
+              onClick={()=>{
+                inverseEditingName()
+                setNewFirstName('')
+                setNewLastName('')
+              }}
               >
               Cancel
             </button>

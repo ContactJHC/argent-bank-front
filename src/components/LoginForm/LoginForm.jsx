@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import "./LoginForm.css"
 import { useDispatch, useSelector } from "react-redux"
 import * as services from "../../services/services"
@@ -76,8 +77,6 @@ export default function LoginForm() {
                     // token = await services.postLogin(userName, password)
                     if (token.length) {
                         navigate('/user')
-                        console.log('le state à la fin du if token.length', store.getState())
-
                     }
                     dispatch({
                         type : "token",
@@ -107,7 +106,6 @@ export default function LoginForm() {
                         }
                     })
 
-                    console.log('le store à la fin du clic sur sign in', store.getState())
                 }
             }> Sign In</button>
         
