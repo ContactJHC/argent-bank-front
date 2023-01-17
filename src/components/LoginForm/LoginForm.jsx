@@ -1,7 +1,7 @@
-import { Link, redirect, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import "./LoginForm.css"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import * as services from "../../services/services"
 import store from "../../store"
 
@@ -9,11 +9,9 @@ import store from "../../store"
 export default function LoginForm() {
     const dispatch = useDispatch()
     const [userName, setUserName] = useState('')
-    const [password, setPassword] = useState('')
+    // const [password, setPassword] = useState('')
+    const password = useSelector((state) => state.password)
     const [isRememberChecked, setIsRememberChecked] = useState(false)
-    let [token, setToken] = useState('')
-    const [isLogged, setIsLogged] = useState(false)
-
     const navigate = useNavigate()
 
     return (
@@ -36,7 +34,15 @@ export default function LoginForm() {
                 id="passwordInput"
                 // type="password"
                 type="text" 
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                    dispatch({
+                        type: "passwordChange",
+                        payload: {
+                            changingField: e.target.value
+                        }
+                    })
+                    // setPassword(e.target.value)
+                }}
                 value={password}
                 required
                 autoComplete="password123"
