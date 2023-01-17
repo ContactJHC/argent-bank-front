@@ -4,12 +4,14 @@ import argentBankLogo from '../../assets/argentBankLogo.png'
 import userIcon from '../../assets/circle-user.svg'
 import logOut from '../../assets/logOut.svg'
 import './Header.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import store from '../../store'
 
 export default function Header() {
 
     const isLogged = useSelector((s)=>s.isLogged)
     const userName = useSelector((s)=>s.firstName)
+    const dispatch = useDispatch()
 
   return (
     <nav className="main-nav">
@@ -31,13 +33,27 @@ export default function Header() {
                             {userName}
                         </span>
                     </Link>
-                    <Link to={"/"} className="main-nav-item">
+                    <Link 
+                        to={"/"} 
+                        className="main-nav-item"
+                        onClick={()=>{
+                            dispatch({
+                                type: "loginLogout",
+                                payload : {
+                                    bool: false
+                                }
+                            })
+                            console.log( 'le clic est entendu ou pas : ',store.getState() )
+                    }}>
                         <img src={logOut} alt="disconnect"/>
                         <span id="signOut">Sign Out</span>
                     </Link>
                 </div>
                 ) : (
-                <Link to={"/login"} className="main-nav-item">
+                <Link 
+                    to={"/login"} 
+                    className="main-nav-item" 
+                    >
                     <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
                     <span id="signIn">
                         Sign In

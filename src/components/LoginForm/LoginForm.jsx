@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
 import "./LoginForm.css"
 import { useDispatch, useSelector } from "react-redux"
 import * as services from "../../services/services"
@@ -12,7 +11,6 @@ export default function LoginForm() {
     // const [password, setPassword] = useState('')
     const userName = useSelector((state) => state.userName)
     const password = useSelector((state) => state.password)
-    const [isRememberChecked, setIsRememberChecked] = useState(false)
     const navigate = useNavigate()
 
     return (
@@ -61,7 +59,6 @@ export default function LoginForm() {
                 <input 
                     type="checkbox"
                     onClick={(e) => {
-                        setIsRememberChecked(!isRememberChecked)
                         dispatch({
                             type: "checkedUnchecked"
                         })
