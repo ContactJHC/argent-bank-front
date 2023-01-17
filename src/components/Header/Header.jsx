@@ -24,15 +24,18 @@ export default function Header() {
         <div>
             {(isLogged ?
                 (
-                <Link to={"/"} className="main-nav-item">
-                    <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
-                    <span id="userName">
-                        {userName}
-                        {/* Tony */}
-                    </span>
-                    <img src={logOut} alt="disconnect"/>
-                    <span id="signOut">Sign Out</span>
-                </Link>
+                <div className="main-nav-item-bis">
+                    <Link to={"/user"} className="main-nav-item">
+                        <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>
+                        <span id="userName">
+                            {userName}
+                        </span>
+                    </Link>
+                    <Link to={"/"} className="main-nav-item">
+                        <img src={logOut} alt="disconnect"/>
+                        <span id="signOut">Sign Out</span>
+                    </Link>
+                </div>
                 ) : (
                 <Link to={"/login"} className="main-nav-item">
                     <img src={userIcon} alt="user icon" className="main-nav-item-icon"/>

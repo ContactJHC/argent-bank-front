@@ -16,14 +16,6 @@ export const routes = [
             element: <Home /> 
         },
         {
-          path: "/user/view/:accountId",
-          element: <Transactions />
-        },
-        // {
-        //   path: "fiche-logement/:id",
-        //   element: <Location />,
-        // },
-        {
           path: "/login",
           element: <Login />
         },

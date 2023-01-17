@@ -5,3 +5,10 @@
 #signOut {
     margin-left: 0.25rem;
 }
+
+div .main-nav-item-bis {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
