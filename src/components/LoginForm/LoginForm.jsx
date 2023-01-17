@@ -8,8 +8,9 @@ import store from "../../store"
 
 export default function LoginForm() {
     const dispatch = useDispatch()
-    const [userName, setUserName] = useState('')
+    // const [userName, setUserName] = useState('')
     // const [password, setPassword] = useState('')
+    const userName = useSelector((state) => state.userName)
     const password = useSelector((state) => state.password)
     const [isRememberChecked, setIsRememberChecked] = useState(false)
     const navigate = useNavigate()
@@ -22,10 +23,17 @@ export default function LoginForm() {
             <input 
                 type="text" 
                 id="usernameInput"
-                onChange={(e) => {setUserName(e.target.value)} }
+                onChange={(e) => {
+                    dispatch({
+                        type: "userNameChange",
+                        payload: {
+                            changingField: e.target.value
+                        }
+                    })
+                }}
                 value={userName}
                 required
-                autoComplete="tony@stark.com"
+                // autoComplete="tony@stark.com"
             />
         </label>
         <label className="input-wrapper">
@@ -45,7 +53,7 @@ export default function LoginForm() {
                 }}
                 value={password}
                 required
-                autoComplete="password123"
+                // autoComplete="password123"
             />
         </label>
         <div className="input-remember">
@@ -70,10 +78,6 @@ export default function LoginForm() {
                     let token = await services.postLogin('iu','ui')
                     // token = await services.postLogin(userName, password)
                     if (token.length) {
-
-
-
-                        setIsLogged(true)
                         navigate('/user')
                         console.log('le state à la fin du if token.length', store.getState())
 
