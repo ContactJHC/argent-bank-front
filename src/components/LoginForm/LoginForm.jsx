@@ -73,8 +73,8 @@ export default function LoginForm() {
             onClick={
                 async (e) => {
                     e.preventDefault()
-                    let token = await services.postLogin('iu','ui')
-                    // token = await services.postLogin(userName, password)
+                    // let token = await services.postLogin('iu','ui')
+                    let token = await services.postLogin(userName, password)
                     if (token.length) {
                         navigate('/user')
                     }

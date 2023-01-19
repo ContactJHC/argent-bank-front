@@ -11,14 +11,14 @@ export async function postLogin(userName, password) {
                 headers: {
                 'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    'email': 'tony@stark.com',
-                    'password': 'password123'
-                })
                 // body: JSON.stringify({
-                //     'email': userName,
-                //     'password': password
+                //     'email': 'tony@stark.com',
+                //     'password': 'password123'
                 // })
+                body: JSON.stringify({
+                    'email': userName,
+                    'password': password
+                })
             })
             .then((res) => res.json())
             .then((json) => json.body.token)

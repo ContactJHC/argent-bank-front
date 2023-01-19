@@ -4,7 +4,6 @@ import Footer from "./components/Footer/Footer"
 import Home from "./pages/Home/Home"
 import Login from "./pages/Login/Login"
 import User from "./pages/User/User"
-import Transactions from "./pages/Transactions/Transactions"
 
 export const routes = [
     {
