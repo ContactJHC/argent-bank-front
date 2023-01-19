@@ -53,7 +53,7 @@ export default function User() {
     <main className="main bg-dark">
       {!isEditingName ? (
         <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
+        <h1>Welcome back<br />{userFirstName} {userLastName} !</h1>
         <button 
           className="edit-button"
           onClick={inverseEditingName}>
