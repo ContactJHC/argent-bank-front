@@ -9,11 +9,36 @@ import store from '../../store'
 
 export default function Header() {
 
-    const isLogged = useSelector((s)=>s.isLogged)
-    const userName = useSelector((s)=>s.firstName)
     const dispatch = useDispatch()
 
+    const storageUserName = JSON.parse(localStorage.getItem('firstName'))
+    if (storageUserName !== null)
+    {   dispatch({
+            type: "firstNameChange",
+            payload : {
+                changingField: storageUserName
+            }
+        })
+    }
+    const userName = useSelector((s)=>s.firstName)
+
+
+    const storageIsLogged = JSON.parse(localStorage.getItem('loginLogout'))
+    if (storageIsLogged !== null) {
+        dispatch({
+            type: "loginLogout",
+            payload : {
+                bool: storageIsLogged
+            }
+        })
+    }
+    const isLogged = useSelector((s)=>s.isLogged)
+
+
     function resetState() {    
+
+        localStorage.clear()
+
         dispatch({
             type: "resetCheckedUnchecked",
             payload : {

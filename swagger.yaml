@@ -60,26 +60,22 @@ paths:
     get:
       tags:
         - User Module
-      summary: Signup
-      description: API for Signup
-      parameters:
-        - in: body
-          name: body
-          description: Signup Payload
-          required: true
-          schema:
-            $ref: '#/definitions/User'
+      summary: Bills
+      description: API to load the bills with regards to one account
       produces:
         - application/json
       responses:
         '200':
-          description: Signup Successfully
+          description: Bills fetched successfully
           schema:
-            $ref: '#/definitions/ApiResponse'
+            $ref: '#/definitions/BillsResponse'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
+
+
+
   /user/profile:
     post:
       security:
@@ -161,6 +157,7 @@ definitions:
       password:
         type: string
         description: user password
+  
   ApiResponse:
     type: object
     properties:
@@ -181,6 +178,24 @@ definitions:
         properties:
           bill:
             type: array
+            properties:
+              date:
+                type: string
+              description: 
+                type: string
+              amount: 
+                type: integer
+              balance:
+                type: integer
+  BillsResponse:
+    type: object
+    properties:
+      transactionType:
+        type: string
+      category:
+        type: string
+      notes: 
+        type: string
   UserProfile:
     type: object
     properties:

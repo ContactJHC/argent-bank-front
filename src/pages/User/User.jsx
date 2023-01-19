@@ -11,9 +11,20 @@ import UsePostProfile from "../../services/UsePostProfile"
 
 export default function User() {
 
-  // données en dur pour simuler connexion utilisateur
+  const dispatch = useDispatch()
+
   let userFirstName = useSelector(s=>s.firstName)
   let userLastName = useSelector(s=>s.lastName)
+
+  const storageToken = JSON.parse(localStorage.getItem('token'))
+  if (storageToken !== null)
+  {  dispatch({
+      type: "token",
+      payload : {
+          token: storageToken
+      }
+    })
+  }
 
   // states locaux pour élaborer la logique de la page avant de passer en global
   const [isEditingName, setIsEditingName] = useState(false)
@@ -23,14 +34,13 @@ export default function User() {
   // afficher/cacher avec conditions l'encart de changement de nom
   const inverseEditingName = () => setIsEditingName(!isEditingName)
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const token = useSelector((s)=>s.token)
   UsePostProfile(token)
 
   //   ici on vérifie la présence de connexion, sinon navigate home
   useEffect(() => {
-    if (token === '') {
+    if (token === '' || token === null) {
       navigate('/')
       console.log('redirection vers Home car token manquant');
     }
@@ -82,7 +92,7 @@ export default function User() {
                 dispatch({
                   type: "firstNameChange",
                   payload: {
-                    changingField: 'prénom en dur local'
+                    changingField: newFirstName
                   }
                 })
                 dispatch({
@@ -91,10 +101,9 @@ export default function User() {
                     changingField: newLastName
                   }
                 })
-                // console.log(store.getState());
-                // console.log(newFirstName, userFirstName, newLastName, userLastName);
-                putProfile(token, 'prénom en dur', 'nom en dur')
-                // console.log(userFirstName, userLastName);
+                localStorage.setItem('firstName', JSON.stringify(newFirstName))
+                localStorage.setItem('lastName', JSON.stringify(newLastName))
+                putProfile(token, newFirstName, newLastName)
                 inverseEditingName()
               }}
               >

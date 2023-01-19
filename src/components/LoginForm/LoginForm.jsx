@@ -84,6 +84,8 @@ export default function LoginForm() {
                             token: token
                         }
                     })
+                    localStorage.setItem('token', JSON.stringify(token))
+
 
                     dispatch({
                         type: "loginLogout",
@@ -91,6 +93,8 @@ export default function LoginForm() {
                             bool: true
                         }
                     })
+                    localStorage.setItem('loginLogout', JSON.stringify(true))
+
 
                     dispatch({
                         type: "userNameChange",

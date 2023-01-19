@@ -21,6 +21,8 @@ export default function UsePostProfile(token) {
                     let prenom = data.body.firstName
                     let nom = data.body.lastName
 
+                    // localStorage.removeItem('firstName')
+                    // localStorage.setItem('firstName', JSON.stringify(prenom))
                     dispatch({
                         type: "firstNameChange",
                         payload : {
@@ -28,12 +30,16 @@ export default function UsePostProfile(token) {
                         }
                     })
 
+                    // localStorage.removeItem('firstName')
+                    // localStorage.setItem('lastName', JSON.stringify(nom))
                     dispatch({
                         type: "lastNameChange",
                         payload : {
                             changingField: nom
                         }
                     })
+
+
 
                     console.log('le prénom :', leprenom, 'le nom : ', lenom);
 
