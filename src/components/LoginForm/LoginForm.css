@@ -9,6 +9,11 @@
   font-size: 1.2em;
 }
 
+#errorMessage {
+  color: tomato;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
 
 .input-remember label{
     display: flex;

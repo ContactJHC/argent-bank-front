@@ -13,11 +13,18 @@ export default function LoginForm() {
     const userName = useSelector((state) => state.userName)
     const password = useSelector((state) => state.password)
     const navigate = useNavigate()
+    const [error, setError] = useState(false)
 
     return (
         
     <form className='login-form'>
         <label className="input-wrapper">
+            {error && (
+                <div id='errorMessage'>
+                    Please ensure the form is properly completed
+                </div>
+            )
+            }
             <span>Username</span>
             <input 
                 type="text" 
@@ -75,9 +82,15 @@ export default function LoginForm() {
                     e.preventDefault()
                     // let token = await services.postLogin('iu','ui')
                     let token = await services.postLogin(userName, password)
+                    if (token === null) {
+                        setError(true)
+                        console.log('on y passe et err vaut ', error);
+                    }
                     if (token.length) {
+                        setError(false)
                         navigate('/user')
                     }
+
                     dispatch({
                         type : "token",
                         payload : {
