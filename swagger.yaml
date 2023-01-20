@@ -5,7 +5,7 @@ info:
   version: '1.0.0'
   termsOfService: 'http://swagger.io/terms/'
 host: localhost:3001
-basePath: /api/v1
+basePath: /api/v1/user
 schemes:
   - http
 # paths:
@@ -15,55 +15,44 @@ schemes:
   # GET : les données du compte retournées sous forme d'objet : titre et objet d'objet pour les débits
   # PUT : le text input pour ajouter des notes sur un débit 
 paths:
-  /user/profile/transactions/:accountId:
-    post:
-      security:
-        - Bearer: []
-      tags:
-        - User Module
-      summary: User Transactions API
-      description: API for fetching an user account
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Account retrieved successully
-          schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
+  /transactions/{accountId}:
     get:
       tags:
-        - User Module
-      summary: Transactions
-      description: Transactions for one account
-      # no parameters for a get request, to be confirmed
-      produces:
-        - application/json
+        - account bills
+      summary: Account Bills
+      description: API for fetching bills from one account
+      operationId: findBillsByAccount
+      parameters:
+        - name: accountId
+          in: path
+          description: ID of account bills to return
+          required: false
+          schema:
+            type: string
       responses:
         '200':
-          description: Transactions fetched successfully
+          description: Bills fetched successfully
           schema:
             $ref: '#/definitions/TransactionsResponse'
         '400':
-          description: Invalid URL
+          description: Invalid Fields
         '500':
-          description: Internal Server Error
-  /user/profile/transactions/:accountId/:billId:
+          description: Internal Server Error       
+  /transactions/:accountId/{billsId}:
     get:
       tags:
-        - User Module
-      summary: Bills
-      description: API to load the bills with regards to one account
-      produces:
-        - application/json
+        - bills details
+      summary: Bills Details
+      description: ID of one bill detail to return
+      operationId: findBillsDetailsById
+      parameters:
+        - name: bill_Id
+          in: path
+          description: bill ID that needs to be considered for filter
+          required: false
+          schema:
+            type: string
+            $ref: '#/definitions/BillsResponse'
       responses:
         '200':
           description: Bills fetched successfully
@@ -72,63 +61,7 @@ paths:
         '400':
           description: Invalid Fields
         '500':
-          description: Internal Server Error
-
-
-
-  /user/profile:
-    post:
-      security:
-        - Bearer: []
-      tags:
-        - User Module
-      summary: User Profile API
-      description: API for fetching a user profile
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: User profile retrieved successully
-          schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
-    put:
-      security:
-        - Bearer: []
-      tags:
-        - User Module
-      summary: User Profile API
-      description: API for updating a user profile
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - in: body
-          name: body
-          description: Update user profile attributes
-          required: true
-          schema:
-            $ref: '#/definitions/UserProfile'
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: User profile retrieved successully
-          schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
+          description: Internal Server Error    
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -158,35 +91,23 @@ definitions:
         type: string
         description: user password
   
-  ApiResponse:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
-        type: string
-      body:
-        type: object
-        properties:
-          accountId:
-            type: string
   TransactionsResponse:
     type: object
     properties:
-      bills:
+      # bills:
+      #   type: object
+      #   properties:
+      bill:
         type: object
         properties:
-          bill:
-            type: array
-            properties:
-              date:
-                type: string
-              description: 
-                type: string
-              amount: 
-                type: integer
-              balance:
-                type: integer
+          date:
+            type: string
+          description: 
+            type: string
+          amount: 
+            type: integer
+          balance:
+            type: integer
   BillsResponse:
     type: object
     properties:
