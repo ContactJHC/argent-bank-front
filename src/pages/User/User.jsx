@@ -2,14 +2,15 @@ import Account from "../../components/Account/Account"
 import data from "../../data/data"
 import { useEffect, useState } from "react"
 import './User.css'
-import store from "../../store"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { postProfile, putProfile } from "../../services/services"
+import { putProfile } from "../../services/services"
 import UsePostProfile from "../../services/UsePostProfile"
 
 
 export default function User() {
+
+  const [isLoading, setIsLoading] = useState(true)
 
   const dispatch = useDispatch()
 
@@ -42,14 +43,17 @@ export default function User() {
   useEffect(() => {
     if (token === '' || token === null) {
       navigate('/')
+      
       console.log('redirection vers Home car token manquant');
     }
+    setIsLoading(false)
   },[token, navigate])
   
   
 
 
   return (
+    (isLoading ? (<></>) : (
     <main className="main bg-dark">
       {!isEditingName ? (
         <div className="header">
@@ -137,5 +141,6 @@ export default function User() {
       })}
     </main>
 
+    ))
   )
 }

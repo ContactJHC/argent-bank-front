@@ -39,7 +39,9 @@ paths:
         '200':
           description: Bills fetched successfully
           schema:
-            $ref: '#/definitions/TransactionsResponse'
+            type: array
+            items: 
+              $ref: '#/definitions/TransactionsResponse'
         '400':
           description: Invalid Fields
         '500':
@@ -255,17 +257,14 @@ definitions:
   TransactionsResponse:
     type: object
     properties:
-      bill:
-        type: object
-        properties:
-          date:
-            type: string
-          description: 
-            type: string
-          amount: 
-            type: integer
-          balance:
-            type: integer
+      date:
+        type: string
+      description: 
+        type: string
+      amount: 
+        type: integer
+      balance:
+        type: integer
   UserProfile:
     type: object
     properties:
