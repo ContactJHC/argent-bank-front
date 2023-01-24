@@ -60,51 +60,29 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-        - name: bill_Id
+        - name: accountId
           in: path
-          description: bill ID that needs to be considered for filter
+          description: ID of account bills to return
           required: false
           schema:
             type: string
-            $ref: '#/definitions/BillsResponse'
+        - name: bill_Id
+          in: path
+          description: bill ID to return
+          required: false
+          schema:
+            type: string
       responses:
         '200':
-          description: Bills fetched successfully
+          description: Bill fetched successfully
           schema:
             $ref: '#/definitions/BillsResponse'
         '400':
           description: Invalid Fields
+        '404':
+          description: Bill not found
         '500':
-          description: Internal Server Error   
-  /transactions/:accountId/{billsId}/notes:
-    post:
-      security:
-        - Bearer: []
-      tags:
-        - bill notes
-      summary: uploads a note
-      description: API to upload a new note
-      operationId: uploadNote
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - in: body
-          name: body
-          description: Note Payload
-          required: true
-          schema:
-            $ref: '#/definitions/BillNote'
-      responses:
-        '200':
-          description: Note successully updated
-        '400':
-          description: Invalid Fields
-        '405':
-          description: Invalid Input
-        '500':
-          description: Internal Server Error
+          description: Internal Server Error 
     put:
       security:
         - Bearer: []
@@ -118,129 +96,43 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+        - name: accountId
+          in: path
+          description: ID of account bills to return
+          required: false
+          schema:
+            type: string
+        - name: bill_Id
+          in: path
+          description: bill ID to return
+          required: false
+          schema:
+            type: string
         - in: body
           name: body
           description: Update one bill note 
           required: true
           schema:
-            $ref: '#/definitions/BillNote'
+            $ref: '#/definitions/BillsResponse'
       produces:
         - application/json
       responses:
         '200':
-          description: Note successully updated
+          description: Bill successully updated
         '400':
           description: Invalid Fields
-        '405':
-          description: Invalid Input
-        '500':
-          description: Internal Server Error
-    delete:
-      tags:
-        - bill notes
-      summary: Delete note
-      description: Delete one bill note
-      operationId: deleteNote
-      parameters:
-        - name: note
-          in: path
-          description: The note that needs to be deleted
-          required: true
-          schema:
-            type: string
-      responses:
-        '400':
-          description: Invalid note supplied
         '404':
-          description: note not found
-  /transactions/:accountId/{billsId}/category:
-    post:
-      security:
-        - Bearer: []
-      tags:
-        - bill category
-      summary: uploads a category
-      description: API to upload a new category
-      operationId: uploadCategory
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - in: body
-          name: body
-          description: Category Payload
-          required: true
-          schema:
-            $ref: '#/definitions/CategoryNote'
-      responses:
-        '200':
-          description: Category successully updated
-        '400':
-          description: Invalid Fields
+          description: Bill not found
         '405':
           description: Invalid Input
         '500':
           description: Internal Server Error
-    put:
-      security:
-        - Bearer: []
-      tags:
-        - bill category
-      summary: Update category
-      description: API to update one bill category
-      operationId: updateCategory
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - in: body
-          name: body
-          description: Update one bill category
-          required: true
-          schema:
-            $ref: '#/definitions/CategoryNote'
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Category successully updated
-        '400':
-          description: Invalid Fields
-        '405':
-          description: Invalid Input
-        '500':
-          description: Internal Server Error
-    delete:
-      tags:
-        - bill category
-      summary: Delete category
-      description: Delete one bill category
-      operationId: deleteCategory
-      parameters:
-        - name: category
-          in: path
-          description: The category that needs to be deleted
-          required: true
-          schema:
-            type: string
-      responses:
-        '400':
-          description: Invalid category supplied
-        '404':
-          description: Category not found
 securityDefinitions:
   Bearer:
     type: apiKey
     name: Authorization
     in: header
 definitions:
-  BillNote:
-    properties:
-      note:
-        type: string
-        description: note content to upload
   BillsResponse:
     type: object
     properties:
@@ -250,10 +142,6 @@ definitions:
         type: string
       notes: 
         type: string
-  CategoryNote:
-    type: string
-  NoteResponse:
-    type: string
   TransactionsResponse:
     type: object
     properties:
@@ -265,10 +153,3 @@ definitions:
         type: integer
       balance:
         type: integer
-  UserProfile:
-    type: object
-    properties:
-      firstName:
-        type: string
-      lastName:
-        type: string
