@@ -86,8 +86,8 @@ paths:
       security:
         - Bearer: []
       tags:
-        - bill notes
-      summary: Update notes
+        - bill update
+      summary: Update bill
       description: API to update one bill notes
       operationId: updateNotes
       parameters:
@@ -111,7 +111,7 @@ paths:
           description: Update one bill note 
           required: true
           schema:
-            $ref: '#/definitions/BillNoteUpdate'
+            $ref: '#/definitions/BillToUpdate'
       produces:
         - application/json
       responses:
@@ -127,68 +127,29 @@ paths:
           description: Invalid Input
         '500':
           description: Internal Server Error
-    # put:
-    #   security:
-    #     - Bearer: []
-    #   tags:
-    #     - bill category
-    #   summary: Update category
-    #   description: API to update one bill category
-    #   operationId: updateCategory
-    #   parameters:
-    #     - in: header
-    #       name: Authorization
-    #       description: Attach Bearer JWT token
-    #       required: true
-    #     - name: accountId
-    #       in: path
-    #       description: ID of account bills to return
-    #       required: true
-    #       schema:
-    #         type: string
-    #     - name: bill_Id
-    #       in: path
-    #       description: bill ID to return
-    #       required: true
-    #       schema:
-    #         type: string
-    #     - in: body
-    #       name: body
-    #       description: Update one bill category 
-    #       required: true
-    #       schema:
-    #         $ref: '#/definitions/BillCategoryUpdate'
-    #   produces:
-    #     - application/json
-    #   responses:
-    #     '200':
-    #       description: Bill successully updated
-    #       schema:
-    #         $ref: '#/definitions/BillsResponse'
-    #     '400':
-    #       description: Invalid Fields
-    #     '404':
-    #       description: Bill not found
-    #     '405':
-    #       description: Invalid Input
-    #     '500':
-    #       description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
     name: Authorization
     in: header
 definitions:
-  BillNoteUpdate:
+  BillToUpdate:
     type: object
     properties:
-      notes: 
+      date:
         type: string
-  BillCategoryUpdate:
-    type: object
-    properties:
+      description: 
+        type: string
+      amount: 
+        type: integer
+      balance:
+        type: integer
+      transactionType:
+        type: string
       category:
         type: string
+      notes: 
+        type: string   
   BillsResponse:
     type: object
     properties:
